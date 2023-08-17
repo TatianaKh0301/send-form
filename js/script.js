@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 form.reset();
                 // form.classList.remove('_sending');
             } else {
-                alert("Error");
+                alert("Error JavaScript");
             }
         } else {
             alert('Please, fill in required fields');
