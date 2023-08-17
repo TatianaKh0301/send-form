@@ -46,7 +46,7 @@
     }
 
     if (!$mail->send()) {
-        $message = "Error";
+        $message = "Error sendmail.php";
     } else {
         $message = "Data sent";
     }
