@@ -7,10 +7,10 @@
     <title>Sent HTML-Form to Email</title>
 </head>
 <body>
-    <div class="wrapp">
+    <div class="wrapper">
         <form method="POST" action="sendmail.php" enctype="multipart/form-data" class="form">
-            <input type="text" placeholder="name" name="name" class="form__input">
-            <input type="email" placeholder="mail" name="email" class="form__input">
+            <input required type="text" placeholder="name" name="name" class="form__input">
+            <input required type="email" placeholder="mail" name="email" class="form__input">
             <div class="form__options options-form">
                 <h4 class="options-form__title">Your sex</h4>
                 <label class="options-form__item">
@@ -31,7 +31,7 @@
                 <div class="file-form__name"></div>
             </div>
             <label class="form__checkbox checkbox-form">
-                <input type="checkbox" name="agreement" class="checkbox-form__input">
+                <input required type="checkbox" name="agreement" class="checkbox-form__input">
                 <span class="checkbox-form__text">I am agree ...</span>
             </label>
             <button class="form__button button">Send</button>
