@@ -12,7 +12,7 @@
     $mail->setLanguage('en', 'phpmailer/language');
     $mail->IsHTML(true);
 
-    $mail->isSMTP();
+    $mail->IsSMTP();
     $mail->Host='smtp.ukr.net';
     $mail->SMTPAuth = true;
     $mail->Username='testmailtkh@ukr.net';
