@@ -241,3 +241,8 @@ textarea.form__input {
     font-weight: 700;
     letter-spacing: 0.125rem;
 }
+
+.form-sending {
+    opacity: 0.5;
+    pointer-events: none;
+}
