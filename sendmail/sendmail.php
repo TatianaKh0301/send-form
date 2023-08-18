@@ -12,12 +12,12 @@
     $mail->setLanguage('en', 'phpmailer/language');
     $mail->IsHTML(true);
 
-    $mail->IsSMTP();
+    $mail->isSMTP();
     $mail->Host='smtp.ukr.net';
     $mail->SMTPAuth = true;
     $mail->Username='testmailtkh@ukr.net';
     $mail->Password = 'uuLd49Du2UoEZybw';
-    $mail->Port = '465';
+    $mail->Port = '2525';
     $mail->SMTPSecure = 'TLS';
 
     $mail->setFrom('testmailtkh@ukr.net', 'Test Mail');
