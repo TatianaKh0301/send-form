@@ -18,7 +18,7 @@
     $mail->Username='testmailtkh@ukr.net';
     $mail->Password = 'uuLd49Du2UoEZybw';
     $mail->Port = '2525';
-    $mail->SMTPSecure = 'TLS';
+    $mail->SMTPSecure = 'SSL';
 
     $mail->setFrom('testmailtkh@ukr.net', 'Test Mail');
     $mail->addAddress('tatyana.kharlamova@aysal.com.ua');
