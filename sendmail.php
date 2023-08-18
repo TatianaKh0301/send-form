@@ -1,11 +1,9 @@
 <?php
     use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
     require 'phpmailer/src/Exception.php';
     require 'phpmailer/src/PHPMailer.php';
-    require 'phpmailer/src/SMTP.php';
 
     $mail = new PHPMailer(true);
     $mail->CharSet = 'UTF-8';
@@ -20,36 +18,49 @@
     $mail->Port = '2525';
     $mail->SMTPSecure = 'SSL';
 
-    $mail->setFrom('testmailtkh@ukr.net', 'Test Mail');
+    // From
+
+    $mail->setFrom('aysalinfo@ukr.net', 'Aysal Info');
+
+    // Where 
+
     $mail->addAddress('tatyana.kharlamova@aysal.com.ua');
-    $mail->Subject = 'E-mail from buyer';
 
-    $body = '<h1>Information about me</h1>';
+    // Topic letter
 
-    if(trim(!empty($_POST['name']))) {
-        $body .= "<p>Name: <strong>".$_POST['name']."</strong>";
-    }
-    if(trim(!empty($_POST['email']))) {
-        $body .= "<p>E-mail: <strong>".$_POST['email']."</strong>";
-    }
-    if(trim(!empty($_POST['message']))) {
-        $body .= "<p>Message: <strong>".$_POST['message']."</strong>";
-    }
-    if(trim(!empty($_POST['sex']))) {
-        $body .= "<p>Sex: <strong>".$_POST['sex']."</strong>";
-    }
-    if(trim(!empty($_POST['agreement']))) {
-        $body .= "<p>Agreement: <strong>".$_POST['agreement']."</strong>";
+    $mail->Subject = 'Order parquet!!!'
+
+    $hand = "Right";
+    if($_POST['hand'] == "left"){
+        $hand = "Left";
     }
 
-    if(trim(!empty($_FILES['image']['tmp_name']))) {
-        $fileTmpName = $_FILES['image']['tmp_name'];
-        $fileName = $_FILES['image']['name'];
-        $mail->addAttachment($fileTmpName, $fileName);
+    //  letter's body
+    $body = '<h1>Super letter</h1>';
+    if(trim(!empty($_POST['name']))){
+        $body.='<p><strong>Name:</strong> '.$_POST['name'].'</p>';
+    }
+    if(trim(!empty($_POST['email']))){
+        $body.='<p><strong>E-mail:</strong> '.$_POST['email'].'</p>';
+    }
+    if(trim(!empty($_POST['hand']))){
+        $body.='<p><strong>Hand:</strong> '.$hand.'</p>';
+    }
+    if(trim(!empty($_POST['age']))){
+        $body.='<p><strong>Age:</strong> '.$_POST['age'].'</p>';
+    }
+    if(trim(!empty($_POST['message']))){
+        $body.='<p><strong>Message:</strong> '.$_POST['message'].'</p>';
     }
 
-    $mail->Body = $body;
+    if (!$mail->send()) {
+        $message = "Error sendmail.php";
+    } else {
+        $message = "Data sent";
+    }
 
-    $mail->send();
-    $mail->smtpClose();
+    $response = ['message' => $message];
+
+    header('Content-type: application/json');
+    echo json_encode($response);
 ?>
